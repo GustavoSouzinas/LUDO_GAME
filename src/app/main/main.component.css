@@ -27,6 +27,19 @@
 
 }
 
+.playercircle{
+
+    position: absolute;
+
+    width: 100%;
+    max-width: 50px;
+    height: 100%;
+    max-height: 50px;
+    border: 2px solid black;
+    border-radius: 50%;
+
+}
+
 .red{
     background-color: red;
 }
@@ -62,6 +75,32 @@
     bottom: 10px;
     right: 10px;
 }
+
+
+
+.top_left_inside{
+    top: 15px;
+    left: 15px;
+}
+
+.top_right_inside{
+    top: 15px;
+    right: 15px;
+}
+
+.bottom_left_inside{
+    bottom: 15px;
+    left: 15px;
+}
+
+.bottom_right_inside{
+    bottom: 15px;
+    right: 15px;
+}
+
+
+
+
 
 .container{
 
