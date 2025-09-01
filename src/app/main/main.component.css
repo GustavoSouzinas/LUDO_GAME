@@ -3,15 +3,49 @@
     position: relative;
     display: flex;
 
-    width: 100%;
-    max-width: 600px;
-    height: 100%;
-    max-height: 600px;
+    align-items: center;
+    justify-content: center;
+
+    width: 600px;
+    height: 600px;
 
 
     padding: 10px;
     border: 2px solid black;
 
+}
+
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(15, 34px);
+  grid-template-rows: repeat(15, 34px);
+  gap: 0px;
+  border: 2px solid black;
+  margin: auto;
+}
+
+.casa {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightyellow;
+}
+
+.peca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 30px;
+    height: 100%;
+    max-height: 30px;
+    border: 1px solid black;
+    background-color: rgb(192, 238, 255);
+    border-radius: 50%;
+    z-index: 2;
 }
 
 .circle{
