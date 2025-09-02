@@ -10,15 +10,27 @@ import { FormsModule } from '@angular/forms';
 })
 export class MainComponent implements OnInit{
 
-currentId = 40;
+currentId = 0;
 
-DiceResult: number = 0;
+AddWithId(){
 
-DiceRoll(){
-
-this.DiceResult = Math.floor(Math.random()* 6) + 1;
+this.currentId = (this.currentId + this.DiceResult) % 60
 
 }
+
+
+
+
+
+DiceResult: number = 0;
+DiceRoll(){
+this.DiceResult = Math.floor(Math.random()* 6) + 1;
+}
+
+
+
+
+
 
 get currentSpace(){
     return this.spaces.find(space => space.id === this.currentId) || {id:0, row:0, col:0};
