@@ -17,7 +17,7 @@
                 </div>
 
 
-            <div *ngIf="visible" class="peca" [ngStyle]="{'grid-row': currentSpace.row + 1, 'grid-column': currentSpace.col + 1}"></div>
+            <div class="peca" *ngFor="let boardPiece of piecesOnBoard" [ngStyle]="{'grid-row': currentSpace.row + 1, 'grid-column': currentSpace.col + 1}"></div>
 
         </div>
 

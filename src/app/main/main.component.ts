@@ -11,19 +11,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class MainComponent implements OnInit{
 
+visible = false;
 currentId = 0;
+DiceResult: number = 0;
 
 AddWithId(){
 this.currentId = (this.currentId + this.DiceResult) % 60
 }
 
-
-DiceResult: number = 0;
 DiceRoll(){
 this.DiceResult = Math.floor(Math.random()* 6) + 1;
 }
-
-visible = false;
 
 select(id:number){
 const Storedpiece = this.pieces.find(f => f.id === id);
@@ -32,6 +30,7 @@ if(Storedpiece){
   Storedpiece.selected = true
   Storedpiece.available = false
   this.visible = true;
+  this.piecesOnBoard.push({ id: 0, row: 0, col: 0 });
 }
 
 }
@@ -47,6 +46,13 @@ pieces = [
 get currentSpace(){
     return this.spaces.find(space => space.id === this.currentId) || {id:0, row:0, col:0};
 }
+
+
+
+piecesOnBoard: {id: number, row: any, col: any}[] = []
+
+
+
 
 spaces: {id: number, row: number, col: number}[] = []
 
