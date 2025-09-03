@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgStyle } from "@angular/common";
+import {NgStyle } from "@angular/common";
+import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -13,13 +14,8 @@ export class MainComponent implements OnInit{
 currentId = 0;
 
 AddWithId(){
-
 this.currentId = (this.currentId + this.DiceResult) % 60
-
 }
-
-
-
 
 
 DiceResult: number = 0;
@@ -27,9 +23,25 @@ DiceRoll(){
 this.DiceResult = Math.floor(Math.random()* 6) + 1;
 }
 
+visible = false;
 
+select(id:number){
+const Storedpiece = this.pieces.find(f => f.id === id);
 
+if(Storedpiece){
+  Storedpiece.selected = true
+  Storedpiece.available = false
+  this.visible = true;
+}
 
+}
+
+pieces = [
+  {id: 1, available: true, selected: false},
+  {id: 2, available: true, selected: false},
+  {id: 3, available: true, selected: false},
+  {id: 4, available: true, selected: false},
+]
 
 
 get currentSpace(){

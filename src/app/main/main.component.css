@@ -51,6 +51,16 @@
 .circle{
 
     position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2,50px);
+    grid-template-rows: repeat(2,50px);
+    gap: 10px;
+    
+
+    justify-content: center;
+    align-content: center;
+    
+
 
     width: 100%;
     max-width: 150px;
@@ -63,7 +73,8 @@
 
 .playercircle{
 
-    position: absolute;
+    align-items: center;
+    justify-content: center;
 
     width: 100%;
     max-width: 50px;
