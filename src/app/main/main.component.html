@@ -1,7 +1,7 @@
 <div class="container">
-
+    <button (click)="changeCurrentPieceValue()">ChangePiece to 1</button>
     <button (click)="DiceRoll()">{{DiceResult}}</button>
-    <button (click)="AddWithId()">Add value!</button>
+    <button (click)="AddById(currentPiece)">Add value!</button>
     <div class="square">
         <div class="tabuleiro">
         
@@ -17,7 +17,7 @@
                 </div>
 
 
-            <div class="peca" *ngFor="let boardPiece of piecesOnBoard" [ngStyle]="{'grid-row': currentSpace.row + 1, 'grid-column': currentSpace.col + 1}"></div>
+            <div class="peca" *ngFor="let boardPiece of piecesOnBoard" [ngStyle]="{'grid-row': boardPiece.row + 1, 'grid-column': boardPiece.col + 1}">{{boardPiece.id}}</div>
 
         </div>
 

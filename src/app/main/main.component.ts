@@ -11,12 +11,31 @@ import { FormsModule } from '@angular/forms';
 })
 export class MainComponent implements OnInit{
 
+pieceId = 0;
+currentPiece = 0;
 visible = false;
-currentId = 0;
+currentSpaceId = 0;
 DiceResult: number = 0;
 
-AddWithId(){
-this.currentId = (this.currentId + this.DiceResult) % 60
+changeCurrentPieceValue(){
+this.currentPiece = 1
+this.currentSpaceId = this.piecesOnBoard[1].pieceSpace
+}
+
+AddById(id: number){
+
+const CurrentPiece = this.piecesOnBoard.find(f => f.id === id)
+
+if(CurrentPiece){
+
+this.currentSpaceId = (this.currentSpaceId + this.DiceResult) % 60
+
+CurrentPiece.col = this.currentSpace.col
+CurrentPiece.row = this.currentSpace.row
+CurrentPiece.pieceSpace = this.currentSpaceId
+
+}
+
 }
 
 DiceRoll(){
@@ -26,11 +45,14 @@ this.DiceResult = Math.floor(Math.random()* 6) + 1;
 select(id:number){
 const Storedpiece = this.pieces.find(f => f.id === id);
 
+this.currentPiece++
+
 if(Storedpiece){
   Storedpiece.selected = true
   Storedpiece.available = false
   this.visible = true;
-  this.piecesOnBoard.push({ id: 0, row: 0, col: 0 });
+  this.piecesOnBoard.push({ id: this.currentPiece, row: this.currentSpace.row, col: this.currentSpace.col, pieceSpace:this.currentSpace.id });
+  this.position.push({ id: this.currentPiece, row: 0, col: 0})
 }
 
 }
@@ -43,15 +65,20 @@ pieces = [
 ]
 
 
+
+get currentPieceID(){
+    return this.piecesOnBoard.find(space => space.id === this.currentSpaceId) || {id:0, row:0, col:0};
+}
+
 get currentSpace(){
-    return this.spaces.find(space => space.id === this.currentId) || {id:0, row:0, col:0};
+    return this.spaces.find(space => space.id === this.currentSpaceId) || {id:0, row:0, col:0};
 }
 
 
 
-piecesOnBoard: {id: number, row: any, col: any}[] = []
+piecesOnBoard: {id: number, row: any, col: any, pieceSpace: any}[] = []
 
-
+position: {id: number, row: any, col: any}[] = []
 
 
 spaces: {id: number, row: number, col: number}[] = []
