@@ -1,11 +1,15 @@
 <div class="container">
-    <button (click)="changeCurrentPieceValue()">ChangePiece to 1</button>
+    <!--BOTÕES DE TESTE DAS FUNÇÕES-->
+    <button (click)="changeCurrentPieceValue(1)">ChangePiece to 1</button>
+    <button (click)="changeCurrentPieceValue(2)">ChangePiece to 2</button>
+    <button (click)="changeCurrentPieceValue(3)">ChangePiece to 3</button>
+    <button (click)="changeCurrentPieceValue(4)">ChangePiece to 4</button>
     <button (click)="DiceRoll()">{{DiceResult}}</button>
-    <button (click)="AddById(currentPiece)">Add value!</button>
+    <button (click)="AddById(playingPiece)">Add value!</button>
     <div class="square">
         <div class="tabuleiro">
         
-                <div class="circle top_left green" >
+                <div class="circle top left green" >
                     <button (click)="select(Storedpiece.id)" class="playercircle" *ngFor="let Storedpiece of pieces" [hidden]="!Storedpiece.available">{{Storedpiece.id}}</button>
                 </div>
 
@@ -17,7 +21,7 @@
                 </div>
 
 
-            <div class="peca" *ngFor="let boardPiece of piecesOnBoard" [ngStyle]="{'grid-row': boardPiece.row + 1, 'grid-column': boardPiece.col + 1}">{{boardPiece.id}}</div>
+            <div class="piece" *ngFor="let boardPiece of piecesOnBoard" [ngStyle]="{'grid-row': boardPiece.row + 1, 'grid-column': boardPiece.col + 1}">{{boardPiece.id}}</div>
 
         </div>
 

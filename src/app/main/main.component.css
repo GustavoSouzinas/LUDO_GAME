@@ -1,40 +1,33 @@
 .square{
-    
     position: relative;
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     width: 600px;
     height: 600px;
-
-
     padding: 10px;
     border: 2px solid black;
-
 }
 
 .tabuleiro {
-  display: grid;
-  grid-template-columns: repeat(15, 34px);
-  grid-template-rows: repeat(15, 34px);
-  gap: 0px;
-  border: 2px solid black;
-  margin: auto;
+    display: grid;
+    grid-template-columns: repeat(15, 34px);
+    grid-template-rows: repeat(15, 34px);
+    gap: 0px;
+    border: 2px solid black;
 }
 
 .casa {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: lightyellow;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    background-color: lightyellow;
 }
 
-.peca{
+.piece{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,40 +42,30 @@
 }
 
 .circle{
-
     position: absolute;
     display: grid;
     grid-template-columns: repeat(2,50px);
     grid-template-rows: repeat(2,50px);
     gap: 10px;
-    
-
     justify-content: center;
     align-content: center;
-    
-
-
     width: 100%;
     max-width: 150px;
     height: 100%;
     max-height: 150px;
     border: 2px solid black;
     border-radius: 50%;
-
 }
 
 .playercircle{
-
     align-items: center;
     justify-content: center;
-
     width: 100%;
     max-width: 50px;
     height: 100%;
     max-height: 50px;
     border: 2px solid black;
     border-radius: 50%;
-
 }
 
 .red{
@@ -101,58 +84,27 @@
     background-color: blue;
 }
 
-.top_left{
+.top{
     top: 10px;
-    left: 10px;
 }
 
-.top_right{
-    top: 10px;
-    right: 10px;
+.bottom{
+    bottom: 10px
 }
 
-.bottom_left{
-    bottom: 10px;
-    left: 10px;
-}
-
-.bottom_right{
-    bottom: 10px;
+.right{
     right: 10px;
 }
 
 
-
-.top_left_inside{
-    top: 15px;
-    left: 15px;
+.left{
+    left: 10px;
 }
-
-.top_right_inside{
-    top: 15px;
-    right: 15px;
-}
-
-.bottom_left_inside{
-    bottom: 15px;
-    left: 15px;
-}
-
-.bottom_right_inside{
-    bottom: 15px;
-    right: 15px;
-}
-
-
-
-
 
 .container{
-
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
-
 }

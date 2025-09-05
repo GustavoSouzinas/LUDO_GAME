@@ -11,15 +11,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class MainComponent implements OnInit{
 
-pieceId = 0;
-currentPiece = 0;
+playingPiece = 0;
 visible = false;
 currentSpaceId = 0;
 DiceResult: number = 0;
 
-changeCurrentPieceValue(){
-this.currentPiece = 1
-this.currentSpaceId = this.piecesOnBoard[1].pieceSpace
+changeCurrentPieceValue(p: number){
+this.playingPiece = p
+const piece = this.piecesOnBoard.find(f => f.id === this.playingPiece)
+
+  if(piece){
+  this.currentSpaceId = piece.pieceSpace
+  }
+
 }
 
 AddById(id: number){
@@ -28,7 +32,7 @@ const CurrentPiece = this.piecesOnBoard.find(f => f.id === id)
 
 if(CurrentPiece){
 
-this.currentSpaceId = (this.currentSpaceId + this.DiceResult) % 60
+this.currentSpaceId = (this.currentSpaceId + this.DiceResult) % this.spaces.length
 
 CurrentPiece.col = this.currentSpace.col
 CurrentPiece.row = this.currentSpace.row
@@ -45,28 +49,20 @@ this.DiceResult = Math.floor(Math.random()* 6) + 1;
 select(id:number){
 const Storedpiece = this.pieces.find(f => f.id === id);
 
-this.currentPiece++
+this.playingPiece++
 
 if(Storedpiece){
-  Storedpiece.selected = true
   Storedpiece.available = false
   this.visible = true;
-  this.piecesOnBoard.push({ id: this.currentPiece, row: this.currentSpace.row, col: this.currentSpace.col, pieceSpace:this.currentSpace.id });
-  this.position.push({ id: this.currentPiece, row: 0, col: 0})
+  this.piecesOnBoard.push({ id: this.playingPiece, row: this.currentSpace.row, col: this.currentSpace.col, pieceSpace:this.currentSpace.id });
 }
 
 }
 
-pieces = [
-  {id: 1, available: true, selected: false},
-  {id: 2, available: true, selected: false},
-  {id: 3, available: true, selected: false},
-  {id: 4, available: true, selected: false},
-]
 
 
 
-get currentPieceID(){
+get currentPieceByID(){
     return this.piecesOnBoard.find(space => space.id === this.currentSpaceId) || {id:0, row:0, col:0};
 }
 
@@ -78,8 +74,13 @@ get currentSpace(){
 
 piecesOnBoard: {id: number, row: any, col: any, pieceSpace: any}[] = []
 
-position: {id: number, row: any, col: any}[] = []
 
+pieces = [
+  {id: 1, available: true,},
+  {id: 2, available: true,},
+  {id: 3, available: true,},
+  {id: 4, available: true,},
+]
 
 spaces: {id: number, row: number, col: number}[] = []
 
